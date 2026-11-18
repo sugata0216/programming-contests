@@ -23,6 +23,7 @@ Spring Boot 4.1.2、Java 17、Maven のプロジェクトです。アプリの�
 - [docs/requirements.md](docs/requirements.md): ロール、機能要件、業務ルール
 - [docs/screens.md](docs/screens.md): 画面一覧
 - [docs/db.md](docs/db.md): テーブル定義
+- [docs/setup.md](docs/setup.md): 環境構築手順（開発者向け）
 
 仕様に書かれていないことや、spec.md の「保留・未決事項」に挙がっている点を決める必要が出たら、実装の前にユーザーに確認してください。
 
@@ -30,7 +31,7 @@ Spring Boot 4.1.2、Java 17、Maven のプロジェクトです。アプリの�
 
 Maven Wrapper（Maven 3.10.1）を使います。Windows の PowerShell では `.\mvnw.cmd`、Git Bash では `./mvnw` を使ってください。
 
-DB の接続先は環境変数で渡します（`DATABASE_HOST`、`DATABASE_PORT`、`DATABASE_NAME`、`DATABASE_USERNAME`、`DATABASE_PASSWORD`）。springboot4-dotenv が入っているので、プロジェクト直下の `.env` に書いても読み込まれます（`.env` は `.gitignore` で追跡対象外）。起動や `@SpringBootTest` のテストには、これらの環境変数と、接続できる PostgreSQL が必要です。
+DB の接続先は環境変数で渡します（`DATABASE_HOST`、`DATABASE_PORT`、`DATABASE_NAME`、`DATABASE_USERNAME`、`DATABASE_PASSWORD`）。springboot4-dotenv が入っているので、プロジェクト直下の `.env` に書いても読み込まれます（`.env` は `.gitignore` で追跡対象外）。起動や `@SpringBootTest` のテストには、これらの環境変数と、接続できる PostgreSQL が必要です。手順の詳細は [docs/setup.md](docs/setup.md) にあります。
 
 ```bash
 ./mvnw spring-boot:run                 # アプリを起動

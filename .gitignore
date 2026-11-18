@@ -8,6 +8,7 @@
 !/AGENTS.md
 !/CLAUDE.md
 !/README.md
+!/.env.example
 
 !/.mvn/
 !/.mvn/wrapper/
@@ -21,3 +22,4 @@
 !/docs/requirements.md
 !/docs/screens.md
 !/docs/spec.md
+!/docs/setup.md
