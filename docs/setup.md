@@ -18,6 +18,14 @@ cloneしたリポジトリをIntelliJ IDEAで開く
 
 ## 手順3
 
+次のコマンドでデータベースを作成する（パスワードを聞かれたら手順0のパスワードを入力する）
+
+```bash
+psql -U postgres -h localhost -c "CREATE DATABASE programming_contests;"
+```
+
+## 手順4
+
 プロジェクト直下に`.env`ファイルを配置し以下のように記述する
 
 ```dotenv
@@ -28,6 +36,6 @@ DATABASE_USERNAME=postgres
 DATABASE_PASSWORD=your-password-here
 ```
 
-## 手順4
+## 手順5
 
 IntelliJ内のMavenメニューから「すべてのMavenプロジェクトを再ロード」する
