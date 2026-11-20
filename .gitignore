@@ -8,7 +8,6 @@
 !/AGENTS.md
 !/CLAUDE.md
 !/README.md
-!/.env.example
 
 !/.mvn/
 !/.mvn/wrapper/
@@ -23,3 +22,4 @@
 !/docs/screens.md
 !/docs/spec.md
 !/docs/setup.md
+!/docs/judge0_setup_guide.md

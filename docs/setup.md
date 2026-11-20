@@ -39,3 +39,7 @@ DATABASE_PASSWORD=your-password-here
 ## 手順5
 
 IntelliJ内のMavenメニューから「すべてのMavenプロジェクトを再ロード」する
+
+## 手順6
+
+[judge0_setup_guide.md](judge0_setup_guide.md)に従ってJudge0の環境を構築する
