@@ -54,7 +54,10 @@
 | name | varchar(255) | NN, UNIQUE | 問題名 |
 | difficulty | integer | NN | → difficulty.id |
 | notes | text | 既定 null | 備考 |
-| is_draft | boolean | NN, 既定 false | 下書きか |
+| statement | text | NN | 問題文。`char_length(statement) < 50000` |
+| explanation_input | text | NN | 入力についての説明。`char_length(explanation_input) < 50000` |
+| explanation_output | text | NN | 出力についての説明。`char_length(explanation_output) < 50000` |
+| is_draft | boolean | NN, 既定 true | 下書きか |
 | is_approved | boolean | NN, 既定 false | 承認済みか |
 | created_at | timestamptz | NN | |
 | created_user_id | integer | NN | → users.id |
@@ -70,9 +73,9 @@
 | name | varchar(255) | NN | |
 | estimated_duration | integer | NN | 目安所要時間 |
 
-### sections（問題文のセクション）
+### sections（問題の追加セクション）
 
-問題文は複数のセクションに分けて持ちます。
+問題文は `questions.statement` に入れます。入力と出力の説明は `questions.explanation_input`、`questions.explanation_output` に入れます。これらの必須項目のほかに必要なセクションがあれば、`sections` に入れます。
 
 | カラム | 型 | 制約・既定値 | 備考 |
 | --- | --- | --- | --- |
@@ -234,7 +237,7 @@ xlsx 上の表題は `entered_users`、シート名は `entry_users` です。�
 | answer | text | | 提出したコード |
 | language_id | integer | | → languages.id |
 | score | integer | NN, 既定 0 | |
-| opened_at | timestamptz | NN | 問題を開いた日時 |
+| opened_at | timestamptz | NN, 既定 current_timestamp | 問題を開いた日時 |
 | submitted_at | timestamptz | | 提出日時 |
 
 ### submission_results（テストケースごとの採点結果）
@@ -261,5 +264,6 @@ xlsx 上の表題は `entered_users`、シート名は `entry_users` です。�
 | user_id | integer | NN | → users.id。UNIQUE(tournament_id, user_id) |
 | score | integer | NN | 得点 |
 | number_of_questions | integer | NN | 全テストケースを通した問題の数 |
+| is_published | boolean | NN, 既定 false | 公開済みか |
 | created_at | timestamptz | NN | |
 | updated_at | timestamptz | | |
