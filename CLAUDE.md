@@ -9,7 +9,7 @@ Spring Boot 4.1.2、Java 17、Maven のプロジェクトです。アプリの�
 - パッケージの枠: `controller`、`service`、`repository`、`mapper`、`entity`、`form`、`dto`、`security`、`exception`（`exception/handler`）。
 - 採点（提出コードの実行）には Judge0 を使います。開発時は各自の PC の Docker で動かし、アプリからは `http://localhost:2358` の API を呼ぶ想定です。Judge0 を呼ぶコードと接続先の設定は、まだありません。
 - データアクセスは MyBatis を使います。`mybatis.configuration.map-underscore-to-camel-case=true` なので、`snake_case` のカラムは `camelCase` のフィールドに自動で対応します。
-- `spring.sql.init.mode=never` なので、起動時にスキーマは作られません。テーブルは [docs/db.md](docs/db.md) に沿って別途用意します。
+- `spring.sql.init.mode=always` なので、起動のたびに `src/main/resources/schema.sql` が実行されます（`@SpringBootTest` のテストでも実行されます）。各テーブルは `CREATE TABLE IF NOT EXISTS` で作るため、既存のテーブルの定義は変わりません。定義を変えた場合は、`ALTER TABLE` かテーブルの作り直しが必要です。テーブル定義を変えるときは、`schema.sql` と [docs/db.md](docs/db.md) の両方を直します。
 - テスト: JUnit 5 + `@SpringBootTest`（現状はコンテキスト起動の確認だけ）
 
 ## 実装の決まり
