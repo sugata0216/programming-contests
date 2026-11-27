@@ -7,7 +7,7 @@ Spring Boot 4.1.2、Java 17、Maven のプロジェクトです。アプリの�
 - 主な依存: Spring Web MVC、Thymeleaf、Spring JDBC、MyBatis（4.0.1）、PostgreSQL ドライバ、Spring Mail、Bean Validation、springboot4-dotenv、Lombok、DevTools
 - Spring Security、`thymeleaf-extras-springsecurity6`、JWT（jjwt）は pom.xml にコメントアウトで残っていて、まだ有効ではありません。
 - パッケージの枠: `controller`、`service`、`repository`、`mapper`、`entity`、`form`、`dto`、`security`、`exception`（`exception/handler`）。
-- 採点（提出コードの実行）には Judge0 を使います。開発時は各自の PC の Docker で動かし、アプリからは `http://localhost:2358` の API を呼ぶ想定です。Judge0 を呼ぶコードと接続先の設定は、まだありません。
+- 採点（提出コードの実行）には Judge0 を使います。開発時は各自の PC の Docker で動かし（プロジェクト直下の `compose.yaml` と `docker/judge0/judge0.conf`、パスワードは `.env` の `JUDGE0_REDIS_PASSWORD` と `JUDGE0_POSTGRES_PASSWORD`）、アプリからは `http://localhost:2358` の API を呼ぶ想定です。Judge0 を呼ぶコードと接続先の設定は、まだありません。
 - データアクセスは MyBatis を使います。`mybatis.configuration.map-underscore-to-camel-case=true` なので、`snake_case` のカラムは `camelCase` のフィールドに自動で対応します。
 - `spring.sql.init.mode=always` なので、起動のたびに `src/main/resources/schema.sql` が実行されます（`@SpringBootTest` のテストでも実行されます）。各テーブルは `CREATE TABLE IF NOT EXISTS` で作るため、既存のテーブルの定義は変わりません。定義を変えた場合は、`ALTER TABLE` かテーブルの作り直しが必要です。テーブル定義を変えるときは、`schema.sql` と [docs/db.md](docs/db.md) の両方を直します。
 - テスト: JUnit 5 + `@SpringBootTest`（現状はコンテキスト起動の確認だけ）
@@ -81,6 +81,6 @@ lint やフォーマッタの設定はありません。
 
 ## 注意点
 
-- `.gitignore` は許可リスト方式です。先頭の `*` ですべて無視し、`!` で指定したファイル（`pom.xml`、`src/`、`mvnw` など）だけを追跡します。`src/` 配下は `!/src/**` でまとめて許可しているので、新しいファイルも自動で追跡されます。一方、トップレベルや `docs/`（ファイルを1つずつ指定）に作ったファイルやディレクトリは、`.gitignore` に `!/<パス>` を追加しない限り追跡されません。
+- `.gitignore` は許可リスト方式です。先頭の `*` ですべて無視し、`!` で指定したファイル（`pom.xml`、`src/`、`mvnw` など）だけを追跡します。`src/` 配下は `!/src/**` でまとめて許可しているので、新しいファイルも自動で追跡されます。一方、トップレベル、`docs/`、`docker/`（どれもファイルを1つずつ指定）に作ったファイルやディレクトリは、`.gitignore` に `!/<パス>` を追加しない限り追跡されません。
 - ユーザーが明示的に指示しない限り、`.gitignore` に新しいファイルやディレクトリを追加しないでください。
 - `.gitattributes` で改行コードを固定しています（`mvnw` は LF、`*.cmd` は CRLF）。

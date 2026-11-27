@@ -34,7 +34,11 @@ DATABASE_PORT=5432
 DATABASE_NAME=programming_contests
 DATABASE_USERNAME=postgres
 DATABASE_PASSWORD=your-password-here
+JUDGE0_REDIS_PASSWORD=your-redis-password
+JUDGE0_POSTGRES_PASSWORD=your-postgres-password
 ```
+
+`JUDGE0_` で始まる2行は、Judge0 の中だけで使うパスワードです。ランダムな英数字を、2つ別々に書きます。
 
 ## 手順5
 

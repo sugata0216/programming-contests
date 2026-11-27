@@ -8,10 +8,15 @@
 !/AGENTS.md
 !/CLAUDE.md
 !/README.md
+!/compose.yaml
 
 !/.mvn/
 !/.mvn/wrapper/
 !/.mvn/wrapper/maven-wrapper.properties
+
+!/docker/
+!/docker/judge0/
+!/docker/judge0/judge0.conf
 
 !/src/
 !/src/**
